@@ -1,0 +1,13 @@
+.PHONY: all
+
+all: 
+	@echo Building migcom and installing...
+	make -C bootstrap_cmds-60/migcom.tproj install
+	@echo Building cctools and installing...
+	/bin/sh -c "cd cctools-836; ./configure --target=arm-apple-darwin11 --prefix=/usr; make; make install"
+
+clean:
+	@echo Cleaning migcom...
+	make -C bootstrap_cmds-60/migcom.tproj clean
+	@echo Cleaning cctools...
+	make -C cctools-836 clean

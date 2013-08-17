@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Copyright (c) 1999-2008 Apple Inc. All rights reserved.
 #
@@ -65,7 +65,7 @@ realpath()
 
 scriptPath=$(realpath "$0")
 scriptRoot=$(dirname "$scriptPath")
-migcomPath=$(realpath "${scriptRoot}/../bin/migcom")
+migcomPath=$(realpath "${scriptRoot}/../libexec/migcom")
 
 if [ -n "${SDKROOT}" ]; then
 	sdkRoot="${SDKROOT}";

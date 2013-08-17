@@ -14,8 +14,7 @@ install:
 	@echo Installing cctools...
 	make -C cctools-836/ DESTDIR=$(DESTDIR) install
 	@echo Installing xcode stubs...
-	install -m 755 xcrun $(DESTDIR)/bin/xcrun
-	install -m 755 xcodebuild $(DESTDIR)/bin/xcodebuild
+	@/bin/sh gen-stubs.sh $(DESTDIR)
 
 clean:
 	@echo Cleaning migcom...

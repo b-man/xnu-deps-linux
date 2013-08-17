@@ -44,7 +44,7 @@ lex.yy.o:
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(TARGET) $(OBJECTS) lex.yy.c parser.c
+	rm -f $(TARGET) $(OBJECTS) lex.yy.c parser.c parser.h
 
 install: $(TARGET)
 	install -d $(DESTDIR)/bin

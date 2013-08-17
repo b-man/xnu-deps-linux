@@ -1,10 +1,32 @@
-TARGET=migcom
-OBJECTS=error.o global.o header.o lex.yy.o mig.o routine.o server.o \
+HOST_CPU := $(shell uname -p)
+ifeq ($(HOST_CPU),i386)
+	CPPFLAGS = -D__i386__ -DI386 -D__LITTLE_ENDIAN__
+	CFLAGS = -m32 -O2
+endif
+ifeq ($(HOST_CPU),x86_64)
+	CPPFLAGS = -D__i386__ -DI386 -D__LITTLE_ENDIAN__
+	CFLAGS = -m32 -O2
+endif
+ifeq ($(HOST_CPU),armv7l)
+	CPPFLAGS = -D__arm__ -DARM -D__LITTLE_ENDIAN__
+	CFLAGS = -O2
+endif
+ifeq ($(HOST_CPU),armv61)
+	CPPFLAGS = -D__arm__ -DARM -D__LITTLE_ENDIAN__
+	CFLAGS = -O2
+endif
+ifeq ($(HOST_CPU),powerpc)
+	CPPFLAGS = -D__ppc__ -DPOWERPC -D__LITTLE_ENDIAN__
+	CFLAGS = -O2
+endif
+
+TARGET = migcom
+OBJECTS = error.o global.o header.o lex.yy.o mig.o routine.o server.o \
 	statement.o string.o type.o user.o utils.o parser.o
-CPPFLAGS=-D__i386__ -DI386 -D__LITTLE_ENDIAN__ -I../../headers/include/foreign \
-	-D__private_extern__=
-CFLAGS=-m32 -O2 -pipe
-LDFLAGS=
+CPPFLAGS += -I../../headers/include/foreign \
+	-include ../../headers/include/foreign/compat.h
+CFLAGS += -pipe
+LDFLAGS +=
 
 all: $(TARGET)
 
@@ -22,9 +44,10 @@ lex.yy.o:
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(TARGET) $(OBJECTS) lex.yy.c parser.h
+	rm -f $(TARGET) $(OBJECTS) lex.yy.c parser.c parser.h
 
 install: $(TARGET)
-	install -m 755 -o root -g root migcom /usr/bin/migcom
-	install -m 755 -o root -g root mig.sh /usr/bin/mig
-
+	install -d $(DESTDIR)/bin
+	install -d $(DESTDIR)/libexec
+	install -m 755 -o root -g root mig.sh $(DESTDIR)/bin/mig
+	install -m 755 -o root -g root migcom $(DESTDIR)/libexec/migcom

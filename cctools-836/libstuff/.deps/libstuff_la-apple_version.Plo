@@ -1,3 +1,0 @@
-libstuff_la-apple_version.lo: apple_version.c ../include/config.h
-
-../include/config.h:

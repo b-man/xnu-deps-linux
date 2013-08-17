@@ -1,1 +1,0 @@
-ld_classic-sets.o: sets.c

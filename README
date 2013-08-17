@@ -5,6 +5,7 @@ On Ubuntu at least, you will need the following packages;
    - llvm
    - llvm-dev
    - uuid-dev
+   - libblocksruntime-dev
    - libc6-i386-dev (if 64-bit)
    - gcc-multilib (if 64-bit)
    - build-essential
@@ -12,6 +13,3 @@ On Ubuntu at least, you will need the following packages;
    - bison
    - clang
    - all of the autotools
-
-You'll also need Block.h or the GNUstep version. Edit the source as necessary.
-

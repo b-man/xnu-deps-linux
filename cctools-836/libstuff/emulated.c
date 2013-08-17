@@ -13,6 +13,10 @@
 #include <mach/host_info.h>
 #include <sys/time.h>
 
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 int _NSGetExecutablePath(char *path, unsigned int *size)
 {
    int bufsize = *size;

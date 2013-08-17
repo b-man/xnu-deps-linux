@@ -36,6 +36,13 @@
 #include "Options.h"
 #include "ld.hpp"
 
+#ifndef x86_THREAD_STATE64_COUNT
+#define x86_THREAD_STATE64_COUNT 42
+#endif
+#ifndef x86_THREAD_STATE64
+#define x86_THREAD_STATE64 4
+#endif
+
 namespace ld {
 namespace tool {
 
@@ -561,8 +568,6 @@ template <> uint32_t HeaderAndLoadCommandsAtom<x86>::cpuType() const	{ return CP
 template <> uint32_t HeaderAndLoadCommandsAtom<x86_64>::cpuType() const	{ return CPU_TYPE_X86_64; }
 template <> uint32_t HeaderAndLoadCommandsAtom<arm>::cpuType() const	{ return CPU_TYPE_ARM; }
 
-
-
 template <>
 uint32_t HeaderAndLoadCommandsAtom<x86>::cpuSubType() const
 {
@@ -583,7 +588,6 @@ uint32_t HeaderAndLoadCommandsAtom<arm>::cpuSubType() const
 {
 	return _state.cpuSubType;
 }
-
 
 
 template <typename A>
@@ -1073,7 +1077,6 @@ uint8_t* HeaderAndLoadCommandsAtom<A>::copySourceVersionLoadCommand(uint8_t* p) 
 	cmd->set_version(_options.sourceVersion());
 	return p + sizeof(macho_source_version_command<P>);
 }
-
 
 template <>
 uint32_t HeaderAndLoadCommandsAtom<x86>::threadLoadCommandSize() const

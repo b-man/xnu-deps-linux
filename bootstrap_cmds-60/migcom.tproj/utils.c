@@ -481,7 +481,7 @@ WriteStructDecl(file, args, func, mask, name, simple, trailer, trailer_t, templa
     boolean_t simple, trailer;
     boolean_t trailer_t, template_only;
 {
-    fprintf(file, "\n#ifdef  __MigPackStructs\n#pragma pack(%lu)\n#endif\n",sizeof(natural_t));
+    fprintf(file, "\n#ifdef  __MigPackStructs\n#pragma pack(%u)\n#endif\n",sizeof(natural_t));
     fprintf(file, "\ttypedef struct {\n");
     fprintf(file, "\t\tmach_msg_header_t Head;\n");
     if (simple == FALSE) {

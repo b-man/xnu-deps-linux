@@ -33,6 +33,7 @@
  * flotaing point and other arithmetic types, as needed, later.
  */
 
+#if !defined(__linux__)
 #ifdef __GNUC__
 typedef __signed char		__int8_t;
 #else	/* !__GNUC__ */
@@ -45,6 +46,9 @@ typedef int			__int32_t;
 typedef unsigned int		__uint32_t;
 typedef long long		__int64_t;
 typedef unsigned long long	__uint64_t;
+#else /* We are on linux, use native types */
+#include <bits/types.h>
+#endif
 
 typedef long			__darwin_intptr_t;
 typedef unsigned int		__darwin_natural_t;

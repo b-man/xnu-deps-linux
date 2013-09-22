@@ -31,8 +31,8 @@ endif
 TARGET = migcom
 OBJECTS = error.o global.o header.o lex.yy.o mig.o routine.o server.o \
 	statement.o string.o type.o user.o utils.o parser.o
-CPPFLAGS += -I../../headers/include/foreign \
-	-include ../../headers/include/foreign/compat.h
+CPPFLAGS += -I../../include/ \
+	-include ../../include/compat.h
 CFLAGS += -pipe
 LDFLAGS +=
 

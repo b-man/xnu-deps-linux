@@ -1,7 +1,6 @@
 CC = clang
 CFLAGS = -g -O0 -I ../include/
 
-DARWIN_PREFIX=arm-apple-darwin11
 PROG := setsegname
 
 OBJS := \
@@ -15,7 +14,7 @@ all: $(OBJS)
 
 install: $(PROG)
 	install -d $(DESTDIR)/bin
-	install -m 755 $(PROG) $(DESTDIR)/bin/$(DARWIN_PREFIX)-$(PROG)
+	install -m 755 $(PROG) $(DESTDIR)/bin/$(PROG)
 
 .PHONY: clean
 clean:

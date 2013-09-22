@@ -10,7 +10,7 @@ OBJS := \
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(OBJS)
-	clang $(OBJS) -o $(PROG)
+	$(CC) $(OBJS) -o $(PROG)
 
 install: $(PROG)
 	install -d $(DESTDIR)/bin

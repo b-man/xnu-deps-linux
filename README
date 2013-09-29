@@ -11,6 +11,7 @@ On Ubuntu at least, you will need the following packages;
    - gcc-multilib (if 64-bit)
    - build-essential
    - flex
+   - tcsh
    - bison
    - clang
    - all of the autotools

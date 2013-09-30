@@ -28,4 +28,5 @@ clean:
 	@echo Cleaning kext-tools...
 	make -C kext-tools/ clean
 	@echo Installing prebuilt libclang_rt.cc_kext.a...
-	install -m 644 prebuilt/libclang_rt.cc_kext.a /usr/lib/libclang_rt.cc_kext.a
+	install -d $(DESTDIR)/lib
+	install -m 644 prebuilt/libclang_rt.cc_kext.a $(DESTDIR)/lib/libclang_rt.cc_kext.a

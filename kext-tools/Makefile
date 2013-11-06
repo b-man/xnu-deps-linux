@@ -1,21 +1,12 @@
-CC = clang
-CFLAGS = -g -O0 -I ../include/
+all:
+	make -C setsegname/
+	make -C kextsymboltool/
 
-PROG := setsegname
-
-OBJS := \
-	setsegname.o
-
-%c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
-
-all: $(OBJS)
-	$(CC) $(OBJS) -o $(PROG)
-
-install: $(PROG)
-	install -d $(DESTDIR)/bin
-	install -m 755 $(PROG) $(DESTDIR)/bin/$(PROG)
+install:
+	make -C setsegname/ DESTDIR=${DESTDIR} install
+	make -C kextsymboltool/ DESTDIR=${DESTDIR} install
 
 .PHONY: clean
 clean:
-	rm -rf $(OBJS) $(PROG)
+	make -C setsegname/ clean
+	make -C kextsymboltool clean

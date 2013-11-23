@@ -1,4 +1,4 @@
-HOST_CPU := $(shell uname -p)
+HOST_CPU := $(shell uname -m)
 ifeq ($(HOST_CPU),i386)
 	CPPFLAGS = -D__i386__ -DI386 -D__LITTLE_ENDIAN__
 	CFLAGS = -m32 -O2

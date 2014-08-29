@@ -43,8 +43,17 @@ typedef	short			__int16_t;
 typedef	unsigned short		__uint16_t;
 typedef int			__int32_t;
 typedef unsigned int		__uint32_t;
+
+/* TODO: use correct headers for x64 systems */
+#ifndef __LP64__
 typedef long long 		__int64_t;
 typedef unsigned long long	__uint64_t;
+#else
+#undef __int64_t
+#undef __uint64_t
+typedef long int		__int64_t;
+typedef unsigned long int	__uint64_t;
+#endif /* !__LP64__ */
 
 typedef long			__darwin_intptr_t;
 typedef unsigned int		__darwin_natural_t;

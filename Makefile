@@ -19,6 +19,9 @@ install:
 	make -C kext-tools/ DESTDIR=$(DESTDIR) install
 	@echo Installing xcode stubs...
 	@/bin/sh gen-stubs.sh $(DESTDIR)
+	@echo Installing prebuilt libclang_rt.cc_kext.a...
+	install -d $(DESTDIR)/lib
+	install -m 644 prebuilt/libclang_rt.cc_kext.a $(DESTDIR)/lib/libclang_rt.cc_kext.a
 
 clean:
 	@echo Cleaning migcom...
@@ -27,6 +30,3 @@ clean:
 	make -C cctools-836/ clean
 	@echo Cleaning kext-tools...
 	make -C kext-tools/ clean
-	@echo Installing prebuilt libclang_rt.cc_kext.a...
-	install -d $(DESTDIR)/lib
-	install -m 644 prebuilt/libclang_rt.cc_kext.a $(DESTDIR)/lib/libclang_rt.cc_kext.a
